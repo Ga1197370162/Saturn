@@ -10,7 +10,7 @@ foreach(header ${TMP_HEADER_LIST})
   execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different ${header} ${INC_PATH}/saturn/${file_name})
 endforeach()
 
-file(GLOB SOURCE_LIST ${SRC_PATH}/**.c ${SRC_PATH}/**.cc ${SRC_PATH}/**.inc)
+file(GLOB_RECURSE SOURCE_LIST ${SRC_PATH}/**.c ${SRC_PATH}/**.cc ${SRC_PATH}/**.inc)
 
 set(STATIC_LIB_NAME ${PROJECT_NAME}-static)
 set(SHARED_LIB_NAME ${PROJECT_NAME}-shared)
