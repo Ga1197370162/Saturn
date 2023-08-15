@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "sat_mem.h"
 
 static void* sat_system_malloc(size_t size, const char* function, int32_t line) {
@@ -23,15 +25,16 @@ static void sat_system_free(void* ptr) {
 }
 
 static sat_mem_vtable_t default_mem_vtable = {
-  .malloc = sat_system_malloc,
-  .calloc = sat_system_calloc,
-  .realloc = sat_system_realloc,
-  .free = sat_system_free,
+    .malloc = sat_system_malloc,
+    .calloc = sat_system_calloc,
+    .realloc = sat_system_realloc,
+    .free = sat_system_free,
 };
 
 static sat_mem_vtable_t* sat_mem_profiler_table = &default_mem_vtable;
 ret_t sat_mem_set_vtable(sat_mem_vtable_t* mem_table) {
   sat_mem_profiler_table = mem_table;
+  return RET_OK;
 }
 
 static sat_mem_out_of_memory_t oom_callback = NULL;

@@ -58,6 +58,7 @@ typedef uint8_t bool_t;
 #include "sat_mem.h"
 #include "sat_error.h"
 #include "sat_assert.h"
+#include "sat_utils.h"
 
 /* interface */
 typedef int32_t (*sat_compare_t)(const void* ctx, const void* data);

@@ -56,18 +56,18 @@ sat_str_t sat_str_init_set_with_len(const char* str, uint32_t init_len) {
 
 ret_t sat_str_clean(sat_str_t str) {
   sat_str_real_t* sat_str_real = SAT_STR_REAL(str);
-  return_value_if_fail(str != NULL && sat_str_real != NULL, SAT_RET_BAD_PARAM);
+  return_value_if_fail(str != NULL && sat_str_real != NULL, RET_BAD_PARAM);
   sat_str_real->surplus_size += sat_str_real->used_size;
   sat_str_real->used_size = 0;
   sat_str_real->str[0] = '\0';
-  return SAT_RET_OK;
+  return RET_OK;
 }
 
 ret_t sat_str_deinit(sat_str_t str) {
   sat_str_real_t* sat_str_real = SAT_STR_REAL(str);
-  return_value_if_fail(str != NULL && sat_str_real != NULL, SAT_RET_BAD_PARAM);
+  return_value_if_fail(str != NULL && sat_str_real != NULL, RET_BAD_PARAM);
   SAT_MEM_FREE(sat_str_real);
-  return SAT_RET_OK;
+  return RET_OK;
 }
 
 bool_t sat_str_cmp(sat_str_t src, const char* dst) {
@@ -91,21 +91,21 @@ sat_str_t sat_str_dup(sat_str_t str) {
 
 ret_t sat_str_remove(sat_str_t str, uint32_t remove_len) {
   sat_str_real_t* sat_str_real = SAT_STR_REAL(str);
-  return_value_if_fail(str != NULL && sat_str_real != NULL, SAT_RET_BAD_PARAM);
+  return_value_if_fail(str != NULL && sat_str_real != NULL, RET_BAD_PARAM);
   sat_str_real->str[sat_str_real->used_size - remove_len] = '\0';
 
   sat_str_real->used_size -= remove_len;
   sat_str_real->surplus_size += remove_len;
-  return SAT_RET_OK;
+  return RET_OK;
 }
 
 ret_t sat_str_stay_range(sat_str_t str, int32_t head, int32_t tail) {
   uint32_t len = 0;
   uint32_t new_len = 0;
   sat_str_real_t* sat_str_real = SAT_STR_REAL(str);
-  return_value_if_fail(str != NULL && sat_str_real != NULL, SAT_RET_BAD_PARAM);
+  return_value_if_fail(str != NULL && sat_str_real != NULL, RET_BAD_PARAM);
 
-  if (sat_str_real->used_size == 0) return SAT_RET_OK;
+  if (sat_str_real->used_size == 0) return RET_OK;
 
   len = sat_str_len(str);
   if (head < 0) {
@@ -138,7 +138,7 @@ ret_t sat_str_stay_range(sat_str_t str, int32_t head, int32_t tail) {
   sat_str_real->surplus_size += sat_str_real->used_size - new_len;
   sat_str_real->used_size = new_len;
 
-  return SAT_RET_OK;
+  return RET_OK;
 }
 
 const char* sat_str_find_segment(sat_str_t str, const char c, uint32_t order_number) {

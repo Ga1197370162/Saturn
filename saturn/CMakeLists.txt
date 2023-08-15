@@ -7,7 +7,7 @@ file(GLOB_RECURSE TMP_HEADER_LIST ${SRC_PATH}/**.h)
 foreach(header ${TMP_HEADER_LIST})
   string(REPLACE "/" ";" arr ${header})
   list(GET arr -1 file_name)
-  execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different ${header} ${INC_PATH}/${file_name})
+  execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different ${header} ${INC_PATH}/saturn/${file_name})
 endforeach()
 
 file(GLOB SOURCE_LIST ${SRC_PATH}/**.c ${SRC_PATH}/**.cc ${SRC_PATH}/**.inc)

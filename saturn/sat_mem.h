@@ -42,8 +42,8 @@ void sat_free(void* ptr);
 typedef void (*sat_mem_out_of_memory_t)(size_t size);
 typedef void* (*sat_malloc_t)(size_t size, const char* function, int32_t line);
 typedef void* (*sat_calloc_t)(size_t nmemb, size_t size, const char* function, int32_t line);
-  typedef void* (*sat_realoc_t)(void* ptr, size_t size, const char* funtion, int32_t line);
-  typedef void (*sat_free_t)(void* ptr);
+typedef void* (*sat_realoc_t)(void* ptr, size_t size, const char* funtion, int32_t line);
+typedef void (*sat_free_t)(void* ptr);
 
 typedef struct _sat_mem_vtable_t {
   sat_malloc_t malloc;
