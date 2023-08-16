@@ -1,7 +1,9 @@
-#if defined(__linux__)
-
 #include <pthread.h>
 #include "sat_mutex.h"
+
+#if defined(_WIN32) || defined(_WIN64)
+#pragma comment(lib, "pthreadVC2.lib")
+#endif
 
 struct _sat_mutex_t {
   int32_t holder;
@@ -55,5 +57,3 @@ bool_t sat_mutex_unlock(sat_mutex_t* mutex) {
   mutex->holder = 0;
   return TRUE;
 }
-
-#endif /*!__linux__*/

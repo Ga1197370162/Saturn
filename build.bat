@@ -6,4 +6,6 @@ if exist "%BUILD_FOLDER%" (
   mkdir "%BUILD_FOLDER%"
 )
 
-xmake
+cd "%BUILD_FOLDER%"
+cmake ..
+cd ..

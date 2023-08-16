@@ -7,5 +7,5 @@ ret_t sat_dummpy_destory(void* ctx) {
 }
 
 int32_t sat_default_compare(const void* ctx, const void* data) {
-  return (int32_t)(ctx - data);
+  return (int32_t)((char*)ctx - (char*)data);
 }
