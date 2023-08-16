@@ -120,9 +120,9 @@ ret_t sat_str_stay_range(sat_str_t str, int32_t head, int32_t tail) {
 
   new_len = (head > tail) ? 0 : (tail - head) + 1;
   if (new_len != 0) {
-    if (head >= len) {
+    if ((uint32_t)head >= len) {
       new_len = 0;
-    } else if (tail >= len) {
+    } else if ((uint32_t)tail >= len) {
       tail = len - 1;
       new_len = (head > tail) ? 0 : (tail - head) + 1;
     }

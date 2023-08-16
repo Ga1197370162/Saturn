@@ -110,7 +110,7 @@ static int32_t sat_array_fix_index(sat_array_t* array, int32_t index) {
   if (index < 0) {
     index = array->size;
     if (index < 0) index = 0;
-  } else if (index > array->size - 1) {
+  } else if ((uint32_t)index > array->size - 1) {
     index = array->size - 1;
   }
   return index;
