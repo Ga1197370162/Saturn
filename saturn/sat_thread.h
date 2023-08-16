@@ -12,15 +12,15 @@ struct _sat_thread_t;
 typedef struct _sat_thread_t sat_thread_t;
 
 sat_thread_t* sat_thread_create(sat_thread_entry entry, void* args);
-void sat_thread_destory(sat_thread_t* thread);
+ret_t sat_thread_destory(sat_thread_t* thread);
 
 void* sat_thread_get_args(sat_thread_t* thread);
 bool_t sat_thread_is_running(sat_thread_t* thread);
 const char* sat_thread_get_name(sat_thread_t* thread);
-void sat_thread_set_name(sat_thread_t* thread, const char* name);
-void sat_thread_set_stack_size(sat_thread_t* thread, uint32_t stack_size);
+ret_t sat_thread_set_name(sat_thread_t* thread, const char* name);
+ret_t sat_thread_set_stack_size(sat_thread_t* thread, uint32_t stack_size);
 
-void sat_thread_start(sat_thread_t* thread);
+ret_t sat_thread_start(sat_thread_t* thread);
 int32_t sat_thread_join(sat_thread_t* thread, bool_t joinable);
 
 END_C_DECLS

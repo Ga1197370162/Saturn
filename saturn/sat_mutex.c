@@ -31,7 +31,7 @@ static ret_t sat_mutex_holder_reset(sat_mutex_t* mutex) {
 sat_mutex_t* sat_mutex_create(void) {
   pthread_mutexattr_t attr;
   sat_mutex_t* mutex = SAT_MEM_ZALLOC(sat_mutex_t);
-  goto_error_if_fail(mutex != NULL);
+  return_value_if_fail(mutex != NULL, NULL);
 
   goto_error_if_fail(pthread_mutexattr_init(&attr) == 0);
   goto_error_if_fail(pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_TIMED_NP) == 0);

@@ -7,7 +7,7 @@ struct _sat_countdown_latch_t {
 
 sat_countdown_latch_t* sat_countdown_latch_create(uint32_t count) {
   sat_countdown_latch_t* countdown_latch = SAT_MEM_ZALLOC(sat_countdown_latch_t);
-  goto_error_if_fail(countdown_latch != NULL);
+  return_value_if_fail(countdown_latch != NULL, NULL);
 
   countdown_latch->count = count;
   countdown_latch->condition = sat_condition_create();

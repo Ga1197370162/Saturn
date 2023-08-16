@@ -7,7 +7,7 @@ struct _sat_condition_t {
 
 sat_condition_t* sat_condition_create(void) {
   sat_condition_t* condition = SAT_MEM_ZALLOC(sat_condition_t);
-  goto_error_if_fail(condition != NULL);
+  return_value_if_fail(condition != NULL, NULL);
 
   condition->mutex = sat_mutex_create();
   goto_error_if_fail(pthread_cond_init(&condition->cond, NULL) == 0);
