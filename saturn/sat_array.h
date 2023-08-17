@@ -5,6 +5,18 @@
 
 BEGIN_C_DECLS
 
+/**
+ * sat_array_t:
+ *  可变长数组, 存储的数据为void*, 如果是普通数值类型可以使用 sat_pointer_from_int。
+ *
+ * create:
+ *  sat_array_t* array = sat_array_create(5, NULL, NULL);
+ *  sat_array_push_back(array, sat_pointer_from_int(1));
+ *  sat_array_push_head(array, sat_pointer_from_int(2));
+ *  int i = sat_pointer_to_int(sat_array_get(array, 0));
+ *  sat_array_destroy(array);
+ */
+
 typedef struct _sat_array_t {
   void** elems;
   uint32_t size;

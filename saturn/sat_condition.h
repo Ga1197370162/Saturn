@@ -5,6 +5,19 @@
 
 BEGIN_C_DECLS
 
+/**
+ * sat_condition_t:
+ *  同步信号量, pthread_cond_t 的简单封装, 与 mutex 类似。
+ *
+ * create:
+ *  sat_condition_t* cond = sat_condition_create();
+ *  // thread1: 等待
+ *  sat_condition_wait(cond);
+ *  // thread2: 唤醒thread1
+ *  sat_condition_notify_all(cond);
+ *  sat_condition_destory(cond);
+ */
+
 struct _sat_condition_t;
 typedef struct _sat_condition_t sat_condition_t;
 

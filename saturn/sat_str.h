@@ -5,6 +5,18 @@
 
 BEGIN_C_DECLS
 
+/**
+ * sat_str_t:
+ *  可变长字符串, 数据结构借鉴 SDS简单字符串, 使用时与普通字符串相同, 也可以使用标志string函数。
+ *  注: 但修改字符串本身时就需要注意将指针指向新的内存位置, 否则会错误。
+ *
+ * create:
+ *  str_t str = sat_str_init_set("hello_saturn");
+ *  printf("%s\n", str);  // hello_saturn
+ *  str = sat_str_append_fmt(str, " pi = %.2f\n", 3.14159263);
+ *  sat_str_deinit(str);
+ */
+
 typedef char* sat_str_t;
 
 #ifndef SAT_STR_MAX_REALLOC
