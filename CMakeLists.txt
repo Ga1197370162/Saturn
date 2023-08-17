@@ -21,4 +21,7 @@ set(LIB_PATH ${BIN_PATH}/lib CACHE PATH "saturn lib")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${LIB_PATH})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${LIB_PATH})
 
+include_directories(${INC_PATH})
+
 add_subdirectory(${PROJECT_SOURCE_DIR}/saturn)
+add_subdirectory(${PROJECT_SOURCE_DIR}/codec)

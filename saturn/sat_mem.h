@@ -17,6 +17,10 @@ BEGIN_C_DECLS
 #define SAT_MEM_ZALLOC(type) (type*)sat_calloc(1, sizeof(type), __FUNCTION__, __LINE__)
 #endif /*!SAT_MEM_ZALLOC*/
 
+#ifndef SAT_MEM_ZALLOCN
+#define SAT_MEM_ZALLOCN(type, n) (type*)sat_calloc(n, sizeof(type), __FUNCTION__, __LINE__)
+#endif /*!SAT_MEM_ZALLOCN*/
+
 #ifndef SAT_MEM_REALLOC
 #define SAT_MEM_REALLOC(ptr, size) sat_ralloc(ptr, size, __FUNCTION__, __LINE__)
 #endif /*SAT_MEM_REALLOC*/
