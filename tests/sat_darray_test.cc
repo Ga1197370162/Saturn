@@ -51,10 +51,3 @@ TEST(array_t, insert) {
   EXPECT_EQ(sat_array_foreach(&array, sat_array_defult_foreach, nullptr), RET_OK);
   EXPECT_EQ(sat_array_deinit(&array), RET_OK);
 }
-
-#include "sat_codec.h"
-TEST(test, test) {
-  for (uint32_t i = 0; i < ARRAY_SIZE(g_codec); ++i) {
-    cout << g_codec[i].name << endl;
-  }
-}

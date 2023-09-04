@@ -1,4 +1,3 @@
-#include "sat_types.h"
 #include "sat_utils.h"
 
 ret_t sat_dummpy_destory(void* ctx) {

@@ -9,7 +9,7 @@ typedef struct _sat_str_real_t {
   char str[];
 } sat_str_real_t;
 
-static inline uint32_t sat_str_real_obj_len(uint32_t sat_str_len) {
+static uint32_t sat_str_real_obj_len(uint32_t sat_str_len) {
   return sizeof(sat_str_real_t) + sat_str_len;
 }
 

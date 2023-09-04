@@ -34,9 +34,9 @@ sat_array_t* sat_array_create(uint32_t capcity, sat_destory_t destory, sat_compa
 ret_t sat_array_destroy(sat_array_t* array);
 ret_t sat_array_clean(sat_array_t* array);
 
-inline uint32_t sat_array_size(sat_array_t* array);
-inline uint32_t sat_array_capcity(sat_array_t* array);
-inline bool_t sat_array_is_empty(sat_array_t* array);
+uint32_t sat_array_size(sat_array_t* array);
+uint32_t sat_array_capcity(sat_array_t* array);
+bool_t sat_array_is_empty(sat_array_t* array);
 
 ret_t sat_array_insert(sat_array_t* array, int32_t index, void* data);
 ret_t sat_array_push_head(sat_array_t* array, void* data);

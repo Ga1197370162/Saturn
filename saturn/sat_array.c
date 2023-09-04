@@ -94,11 +94,11 @@ uint32_t sat_array_capcity(sat_array_t* array) {
 }
 
 bool_t sat_array_is_empty(sat_array_t* array) {
-  bool_t is_empty = FALSE;
+  bool_t is_empty = TRUE;
   return_value_if_fail(array != NULL, FALSE);
 
   if (array->elems && array->size > 0) {
-    is_empty = TRUE;
+    is_empty = FALSE;
   }
   return is_empty;
 }
