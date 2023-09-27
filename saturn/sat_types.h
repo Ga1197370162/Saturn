@@ -1,5 +1,7 @@
-#ifndef __SAT_TYPE_H__
-#define __SAT_TYPE_H__
+#ifndef __SAT_TYPES_H__
+#define __SAT_TYPES_H__
+
+#include <stdint.h>
 
 #ifdef __cplusplus
 #define BEGIN_C_DECLS extern "C" {
@@ -9,13 +11,29 @@
 #define END_C_DECLS
 #endif
 
-#include <math.h>
-#include <stdio.h>
-#include <wchar.h>
-#include <stdint.h>
-#include <string.h>
-#include <stddef.h>
-#include <stdarg.h>
+/* assert */
+#ifndef return_if_failed
+#define return_if_failed(EXPR) \
+  {                            \
+    if (!(EXPR)) {             \
+      return;                  \
+    }                          \
+  }
+#endif
+
+#ifndef return_value_if_failed
+#define return_value_if_failed(EXPR, VAL) \
+  if (!(EXPR)) {                          \
+    return VAL;                           \
+  }
+#endif
+
+#ifndef goto_error_if_failed
+#define goto_error_if_failed(EXPR) \
+  if (!(EXPR)) {                   \
+    goto error;                    \
+  }
+#endif
 
 /* struct member offset */
 #ifndef INSTANCE_OF
@@ -26,43 +44,25 @@
 #endif
 #endif
 
-/* un_use */
-#define UNUSE(v) ((void)v)
-
-/* ret_t */
-typedef int32_t ret_t;
-
-/* bool */
-#define TRUE 1
-#define FALSE 0
-typedef uint8_t bool_t;
-
-/* math */
-#define ABS(v) abs(v)
-#define SIN(v) sin(v)
-#define ARRAY_SIZE(array) (sizeof(array) / sizeof(array[0]))
-
 /* types */
-#define IS_SPACE(c) (c == ' ' || c == '\n' || c == '\t' || c == '\r')
-#define IS_ALPHA(c) ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+typedef int32_t ret_t;
+typedef enum _ret_type_t {
+  RET_OK = 0x0000,
+  RET_FAIL,
+  RET_BAD_PARAM,
+} ret_type_t;
 
-/* bits */
-#define SET_NULL(p) (p) = NULL
-#define ROUND_TO8(size) (((size + 7) >> 3) << 3)
+typedef uint8_t bool_t;
+typedef enum _bool_type_t {
+  TRUE = 0x01,
+  FALSE = 0x00,
+} bool_type_t;
 
-#define SET_BIT(v, n) ((v) |= 1UL << (n))
-#define CLEAR_BIT(v, n) ((v) &= ~(1UL << (n)))
-#define TOGGLE_BIT(v, n) ((v) ^= (1UL << (n)))
-#define TEST_BIT(v, n) (((v) >> (n)) & 1U)
+/* macros */
+#define M_E 2.71828f
+#define M_PI 3.1415926f
 
-#include "sat_mem.h"
-#include "sat_error.h"
-#include "sat_assert.h"
-#include "sat_utils.h"
+#define UNUSED(v) ((void)v)
+#define ARRAY_SIZE(ARR) (sizeof(ARR) / sizeof(ARR[0]))
 
-/* interface */
-typedef int32_t (*sat_compare_t)(const void* ctx, const void* data);
-typedef ret_t (*sat_foreach_t)(void* ctx, const void* data);
-typedef ret_t (*sat_destory_t)(void* ctx);
-
-#endif /*__SAT_TYPE_H__*/
+#endif /*!__SAT_TYPES_H__*/
