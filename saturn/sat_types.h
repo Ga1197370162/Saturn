@@ -2,6 +2,7 @@
 #define __SAT_TYPES_H__
 
 #include <stdint.h>
+#include <stdlib.h>
 
 #ifdef __cplusplus
 #define BEGIN_C_DECLS extern "C" {
@@ -61,8 +62,22 @@ typedef enum _bool_type_t {
 /* macros */
 #define M_E 2.71828f
 #define M_PI 3.1415926f
+#define M_MAX(a, b) ((a) > (b) ? (a) : (b))
+#define M_MIN(a, b) ((a) > (b) ? (b) : (a))
 
+#define GLUE(a, b) a##b
+#define STRINGIFY(s) #s
 #define UNUSED(v) ((void)v)
+#define ALIGN(x, a) (((x) + (a)-1) & ~((a)-1))
 #define ARRAY_SIZE(ARR) (sizeof(ARR) / sizeof(ARR[0]))
+#define MKTAG(a, b, c, d) ((a) | ((b) << 8) | ((c) << 16) | ((unsigned)(d) << 24))
+#define MKBETAG(a, b, c, d) ((d) | ((c) << 8) | ((b) << 16) | ((unsigned)(a) << 24))
+
+#define SWAP(type, a, b) \
+  {                      \
+    type tmp = a;        \
+    a = b;               \
+    b = tmp;             \
+  }
 
 #endif /*!__SAT_TYPES_H__*/
