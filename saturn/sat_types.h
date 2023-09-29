@@ -66,7 +66,11 @@ typedef enum _bool_type_t {
 #define M_MIN(a, b) ((a) > (b) ? (b) : (a))
 
 #define GLUE(a, b) a##b
-#define STRINGIFY(s) #s
+#define JOIN(a, b) GLUE(a, b)
+
+#define STRINGIFY(s) TOSTRING(s)
+#define TOSTRING(s) #s
+
 #define UNUSED(v) ((void)v)
 #define ALIGN(x, a) (((x) + (a)-1) & ~((a)-1))
 #define ARRAY_SIZE(ARR) (sizeof(ARR) / sizeof(ARR[0]))
@@ -79,5 +83,7 @@ typedef enum _bool_type_t {
     a = b;               \
     b = tmp;             \
   }
+
+#define MAX_PATH 256
 
 #endif /*!__SAT_TYPES_H__*/
